@@ -41,7 +41,7 @@ export function VideoUpload({ onVideoUploaded }: Props) {
         .upload(filePath, file, {
           cacheControl: '3600',
           upsert: false,
-          onUploadProgress: (progressEvent) => {
+          onUploadProgress: (progressEvent: { loaded: number; total?: number }) => {
             const percent = Math.round(
               ((progressEvent.loaded || 0) / (progressEvent.total || 1)) * 100
             );
