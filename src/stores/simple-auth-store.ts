@@ -35,7 +35,7 @@ export const useSimpleAuthStore = create<SimpleAuthStore>()(
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, accessCode: access_code }),
+            body: JSON.stringify({ username, accessCode }),
           });
 
           const data = await response.json();
@@ -65,13 +65,13 @@ export const useSimpleAuthStore = create<SimpleAuthStore>()(
         }
       },
 
-      logout: () => {
+      logout: async () => {
         set({ user: null, isAuthenticated: false });
       },
     }),
     {
       name: 'simple-auth-store',
-      storage: createJSONStorage(() => localStorage, 'simple-auth-store'),
+      storage: createJSONStorage(() => localStorage),
     },
   ),
 );

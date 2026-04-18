@@ -168,7 +168,7 @@ export const useAuthStore = create<AuthStore>()(
 );
 
 // Initialize auth state
-supabase.auth.onAuthStateChange(async (event, session) => {
+supabase.auth.onAuthStateChange(async (event: import('@supabase/supabase-js').AuthChangeEvent, session: import('@supabase/supabase-js').Session | null) => {
   const store = useAuthStore.getState();
   
   if (session?.user) {
